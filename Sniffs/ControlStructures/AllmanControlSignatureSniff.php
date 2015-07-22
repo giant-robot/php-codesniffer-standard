@@ -35,6 +35,7 @@ class GiantRobot_Sniffs_ControlStructures_AllmanControlSignatureSniff implements
             T_FOREACH,
             T_ELSE,
             T_ELSEIF,
+            T_SWITCH,
         );
     }
 
