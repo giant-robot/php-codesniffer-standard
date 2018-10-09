@@ -1,4 +1,8 @@
 <?php
+namespace PHP_CodeSniffer\Standards\GiantRobot\Sniffs\ControlStructures;
+
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Standards\Squiz\Sniffs\ControlStructures\ControlSignatureSniff as SquizControlSignatureSniff;
 
 /**
  * This is a modified version of Squiz Standard's Control Signature Sniff.
@@ -6,46 +10,18 @@
  * It verifies that control statements are using Allman style braces and are
  * otherwise PSR-2 compliant.
  */
-class GiantRobot_Sniffs_ControlStructures_AllmanControlSignatureSniff implements PHP_CodeSniffer_Sniff
+class ControlSignatureSniff extends SquizControlSignatureSniff
 {
-    /**
-     * A list of tokenizers this sniff supports.
-     *
-     * @var array
-     */
-    public $supportedTokenizers = array(
-        'PHP',
-        'JS',
-    );
-
-    /**
-     * Return an array of tokens this test wants to listen for.
-     *
-     * @return array
-     */
-    public function register()
-    {
-        return array(
-            T_TRY,
-            T_CATCH,
-            T_DO,
-            T_WHILE,
-            T_FOR,
-            T_IF,
-            T_FOREACH,
-            T_ELSE,
-            T_ELSEIF,
-            T_SWITCH,
-        );
-    }
-
     /**
      * Processes this test, when one of its tokens is encountered.
      *
-     * @param  PHP_CodeSniffer_File  $phpcsFile  The file being scanned.
-     * @param  int                   $stackPtr   The position of the current token in the stack passed in $tokens.
+     * @param \PHP_CodeSniffer\Files\File $phpcsFile The file being scanned.
+     * @param int                         $stackPtr  The position of the current token in the
+     *                                               stack passed in $tokens.
+     *
+     * @return void
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
